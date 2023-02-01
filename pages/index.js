@@ -1,9 +1,10 @@
-
+import Layout from '@/layout/Layout'
 
 export default function Home() {
+
   return (
-    <>
-      <h1 className='text-4xl font-bold'>Next JS</h1>
-    </>
+    <Layout>
+      contenido
+    </Layout>
   )
 }
