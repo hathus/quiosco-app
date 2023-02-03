@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, use } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
 
 const QuioscoContext = createContext()
@@ -7,6 +7,8 @@ const QuioscoProvider = ({ children }) => {
 
     const [categorias, setCategorias] = useState([])
     const [categoriaActual, setCategoriaActual] = useState({})
+    const [producto, setProducto] = useState({})
+    const [modal, setModal] = useState(false)
 
     // Función que obtiene las categorías de la base de datos con axios
     const obtenerCategorias = async () => {
@@ -34,12 +36,26 @@ const QuioscoProvider = ({ children }) => {
         setCategoriaActual(categoria[0])
     }
 
+    // Función que hace set producto al state
+    const handleSetProducto = producto => {
+        setProducto(producto)
+    }
+
+    // Función que maneja el modal
+    const handleChangeModal = () => {
+        setModal(!modal)
+    }
+
     return (
         <QuioscoContext.Provider
             value={{
                 categorias,
                 categoriaActual,
                 handleClickCategoria,
+                producto,
+                handleSetProducto,
+                modal,
+                handleChangeModal,
             }}
         >
             {children}
