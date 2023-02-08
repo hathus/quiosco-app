@@ -4,7 +4,7 @@ import useQuiosco from '@/hooks/useQuiosco'
 
 const Producto = ({ producto }) => {
 
-    const { handleSetProducto } = useQuiosco()
+    const { handleSetProducto, handleChangeModal } = useQuiosco()
 
     const { nombre, imagen, precio } = producto
 
@@ -16,7 +16,7 @@ const Producto = ({ producto }) => {
                 alt={`Imagen de ${nombre}`}
                 src={`/assets/img/${imagen}.jpg`}
                 width={300}
-                height={150}
+                height={0}
             />
             <div className='p-5'>
                 <h3 className='text-2xl font-bold'>{nombre}</h3>
@@ -26,7 +26,10 @@ const Producto = ({ producto }) => {
             </div>
             <button type='button'
                 className='bg-indigo-600 hover:bg-indigo-800 text-white uppercase p-3 mt-5 w-full font-bold rounded'
-                onClick={() => handleSetProducto(producto)}
+                onClick={() => {
+                    handleChangeModal()
+                    handleSetProducto(producto)
+                }}
             >
                 Agregar
             </button>
