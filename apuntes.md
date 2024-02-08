@@ -26,3 +26,11 @@ Ahora instalamos la dependencia de prisma para producción
 npm i @prisma/client
 ```
 
+Una vez instaladas las dependencias de prisma para desarrollo y producción, ahora procedemos a inicializar las configuraciones, usaremos el modificador --datasource-provider e indicamos que servidor de bases de datos vamos a usar, en este caso se usara mariadb.
+
+```bash
+npx prisma init --datasource-provider mysql
+```
+
+Esto creará un archivo de configuración para el proveedor de base de datos seleccionado
+
