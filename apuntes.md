@@ -32,5 +32,7 @@ Una vez instaladas las dependencias de prisma para desarrollo y producción, aho
 npx prisma init --datasource-provider mysql
 ```
 
-Esto creará un archivo de configuración para el proveedor de base de datos seleccionado
+Esto creará un archivo de configuración para el proveedor de base de datos seleccionado, abrimos los archivos recién creados y configuramos las credenciales en el archivo .env
+
+Una vez hecho esto abrimos el archivo schema.prisma que se encuentra en la carpeta de prisma y empezaremos a trabajar en el modelado de los datos
 
