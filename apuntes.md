@@ -64,3 +64,68 @@ npx prisma migrate dev
 
 Nos pedirá un nombre de la migración y este será el nombre de la migración en la carpeta de prisma
 
+Agregamos el modelo de ordenes
+
+```javascript
+model Orden {
+  id Int @id @default(autoincrement())
+  nombre String
+  fecha String
+  total Float
+  pedido Json
+}
+```
+
+Y ejecutamos el comando de migración y le damos un nombre a la migración de ordenes
+
+Ahora crearemos un archivo de seeding de datos para nuestros modelos creados, para ello creamos la carpeta data dentro de prisma y dentro de esta carpeta creamos dos archivos uno llamado categorías.ts y el otro productos.ts, en cada uno de ellos irá un arreglo de objetos que será la información que tendrán nuestras tablas en la base de datos.
+
+Después de crearemos un archivo dentro de la carpeta de prisma que se llama seed.ts que contendrá lo sigueinte:
+
+```javascript
+import { categorias } from './data/categorias';
+import { productos } from './data/productos';
+import { PrismaClient } from '@prisma/client';
+
+// Creamos una instancia de prisma client
+const prisma = new PrismaClient()
+
+// Creamos la función principal que hará la comunicación async con nuestra BD
+const main = async () : Promise<void> => {
+    try {
+        await prisma.categoria.createMany({
+            data: categorias
+        })
+
+        await prisma.producto.createMany({
+            data: productos
+        })
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+// Mandamos a llamar a nuestra función principal
+main()
+```
+
+Ahora necesitamos instalar una dependencia para poder usar este comando en prisma desde la terminal, para ello instalamos la siguiente dependencia
+
+```bash
+npm i ts-node
+```
+
+Una vez hecho esto abrimos el package.json y pondremos lo siguiente en el debajo de scripts
+
+```json
+"prisma": {
+    "seed" : "ts-node prisma/seed.ts"
+}
+```
+
+Ahora ejecutamos el comando de la siguiente manera
+
+```bash
+npx prisma db seed
+```
+
