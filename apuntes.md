@@ -56,3 +56,11 @@ model Categoria {
 }
 ```
 
+Ahora ejecutamos una migración de estos modelos para que sean creados en la BD, ejecutamos el siguiente comando en la terminal
+
+```bash
+npx prisma migrate dev
+```
+
+Nos pedirá un nombre de la migración y este será el nombre de la migración en la carpeta de prisma
+
