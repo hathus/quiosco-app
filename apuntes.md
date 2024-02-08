@@ -36,3 +36,23 @@ Esto creará un archivo de configuración para el proveedor de base de datos sel
 
 Una vez hecho esto abrimos el archivo schema.prisma que se encuentra en la carpeta de prisma y empezaremos a trabajar en el modelado de los datos
 
+Así queda el modelado de categorías y productos
+
+```javascript
+model Producto {
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  precio      Float
+  imagen      String?
+  categoriaId Int
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+}
+
+model Categoria {
+  id        Int        @id @default(autoincrement())
+  nombre    String
+  icono     String?
+  productos Producto[]
+}
+```
+
