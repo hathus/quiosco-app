@@ -12,3 +12,17 @@ Nos pedirá algunas configuraciones para poder usar las características anterio
 
 ## Instalando y Prisma
 
+En la terminal escribimos las siguientes instrucciones
+
+La primera es para el entorno de desarrollo, por eso utilizamos el modificador -D en la instrucción
+
+```bash
+npm i -D prisma
+```
+
+Ahora instalamos la dependencia de prisma para producción
+
+```bash
+npm i @prisma/client
+```
+
