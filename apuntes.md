@@ -129,3 +129,9 @@ Ahora ejecutamos el comando de la siguiente manera
 npx prisma db seed
 ```
 
+Ahora instalamos Axios para hacer las llamadas a la api de una manera mas fácil, para ello lo instalamos en la terminal con el comando
+
+```bash
+npm i axios
+```
+
